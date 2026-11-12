@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+  <title>Subs2Anki</title>
+</head>
+<body>
+  <header class="top">
+    <div class="logo">🎧</div>
+    <div class="brand"><b>Subs2Anki</b><small>视频一键句子卡</small></div>
+    <span class="status" id="serverStatus"><i></i><span>检测中</span></span>
+  </header>
+
+  <div class="video-card" id="videoCard">
+    <div class="badge" id="platformBadge">—</div>
+    <div class="vtitle" id="videoTitle">正在读取当前页面…</div>
+    <div class="vsub" id="videoSub">在 YouTube / B 站视频页面打开本插件</div>
+  </div>
+
+  <div id="setupHint" class="hint hidden"></div>
+
+  <div class="section" id="pageRow" style="display:none">
+    <label>分 P（字幕和音频会一起切到所选分 P）</label>
+    <select id="page"></select>
+  </div>
+
+  <div class="section">
+    <label>字幕轨 <span class="tip" id="trackTip"></span></label>
+    <select id="track"><option value="">读取中…</option></select>
+    <button id="serverSubsBtn" class="link" style="margin-top:6px">用本地服务重新抓字幕（页面拿不到时点这个）</button>
+    <label>对照译文（可选，翻卡时显示）</label>
+    <select id="transTrack"><option value="">不要译文</option></select>
+  </div>
+
+  <div class="section grid2">
+    <div><label>语言</label>
+      <select id="lang">
+        <option value="auto">自动识别</option>
+        <option value="ja">日语</option>
+        <option value="ko">韩语</option>
+        <option value="en">英语</option>
+        <option value="zh">中文</option>
+      </select></div>
+    <div><label>卡面</label>
+      <select id="cardMode">
+        <option value="listen_first">先听 · 翻开看句子</option>
+        <option value="read_first">看句子 + 听</option>
+      </select></div>
+  </div>
+
+  <div class="section">
+    <label>Anki 牌组根目录（每个视频自动建同名子牌组）</label>
+    <input id="deck" type="text" value="Subs2Anki" spellcheck="false">
+    <label class="check"><input type="checkbox" id="wantAudio" checked>
+      <span>切出每句的原声片段（需本地服务 + ffmpeg）</span></label>
+    <label class="check"><input type="checkbox" id="ankiConnect">
+      <span>顺便直推 AnkiConnect（Anki 需保持打开）</span></label>
+    <label class="check"><input type="checkbox" id="allowAI">
+      <span>实验性：尝试自动抓取 B 站字幕（适配未成功，默认关）</span></label>
+  </div>
+
+  <details class="advanced">
+    <summary>高级设置（断句 / 音频来源）</summary>
+    <div class="section grid3">
+      <div><label>最短句长 s</label><input id="minDur" type="number" step="0.1" value="1.0"></div>
+      <div><label>最长句长 s</label><input id="maxDur" type="number" step="0.5" value="12"></div>
+      <div><label>停顿切分 s</label><input id="gap" type="number" step="0.05" value="0.65"></div>
+    </div>
+    <label>本地音频文件（跳过 yt-dlp，填绝对路径）</label>
+    <input id="audioSource" type="text" placeholder="例：D:\\video\\ep01.mp3  （可留空）" spellcheck="false">
+    <label>站点需登录时读取哪个浏览器的 Cookie</label>
+    <select id="cookies">
+      <option value="">不读取</option>
+      <option value="chrome">Chrome</option>
+      <option value="edge">Edge</option>
+      <option value="firefox">Firefox</option>
+    </select>
+    <label>代理（YouTube 下载用；留空自动读 Windows 系统代理）</label>
+    <input id="proxy" type="text" placeholder="例：http://127.0.0.1:7890" spellcheck="false">
+    <label>手动导入本地字幕（srt / vtt / json）</label>
+    <input id="localSub" type="file" accept=".srt,.vtt,.json,.txt">
+  </details>
+
+  <div class="preview" id="preview"><div class="empty">选好字幕轨后，这里会显示前几句预览</div></div>
+
+  <button id="makeBtn" class="primary">✨ 一键制卡</button>
+  <div class="progress-wrap hidden" id="progressWrap">
+    <div class="pbar"><div id="pbarFill"></div></div>
+    <div class="pmsg" id="pmsg"></div>
+  </div>
+  <div id="result"></div>
+
+  <footer>
+    <button id="tsvBtn" class="link">只导出 TSV（不开服务也能用）</button>
+    <span>·</span>
+    <button id="helpBtn" class="link">使用说明</button>
+  </footer>
+  <div id="help" class="help hidden"></div>
+
+  <details id="diagBox" class="advanced">
+    <summary>诊断信息（排查时点开复制）</summary>
+    <pre id="diagText"></pre>
+  </details>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# 只有 genanki 是 Python 强依赖（生成 .apkg，双击即可导入 Anki）。
+# yt-dlp 提供命令行，可由 setup.bat 一并安装；没有它也能用纯插件 TSV 模式。
+genanki>=0.13.0
+yt-dlp>=2024.1.1

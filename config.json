@@ -1,0 +1,23 @@
+{
+  "host": "127.0.0.1",
+  "port": 8766,
+  "out_dir": "out",
+  "deck": "Subs2Anki",
+  "card_mode": "listen_first",
+  "lang": "auto",
+  "min_duration": 1.0,
+  "max_duration": 12.0,
+  "gap_threshold": 0.65,
+  "max_chars": 90,
+  "pad_before": 0.12,
+  "pad_after": 0.28,
+  "audio": true,
+  "apkg": true,
+  "ankiconnect": false,
+  "ankiconnect_url": "http://127.0.0.1:8765",
+  "yt_dlp": "yt-dlp",
+  "ffmpeg": "ffmpeg",
+  "cookies_from_browser": "",
+  "proxy": "",
+  "translation_lang": ""
+}

@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Subs2Anki · 视频一键句子卡",
+  "version": "0.1.0",
+  "description": "在 YouTube / B 站看视频时，一键把字幕切成单句，生成带原声片段的 Anki 卡片。",
+  "permissions": ["activeTab", "scripting", "storage", "downloads", "tabs"],
+  "host_permissions": [
+    "http://127.0.0.1:8766/*",
+    "https://*.youtube.com/*",
+    "https://www.youtube-nocookie.com/*",
+    "https://*.bilibili.com/*",
+    "https://*.hdslb.com/*",
+    "https://youtube.googleapis.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Subs2Anki 一键制卡"
+  },
+  "background": { "service_worker": "background.js" },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

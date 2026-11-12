@@ -1,0 +1,19 @@
+{
+  "title": "示例·日语早晨会话",
+  "url": "https://www.youtube.com/watch?v=demoS2A0001",
+  "cues": [
+    {"start": 1.2, "end": 2.6, "text": "おはよう、"},
+    {"start": 2.7, "end": 4.2, "text": "今日はいい天気ですね。"},
+    {"start": 5.0, "end": 6.4, "text": "朝ごはんはもう食べましたか？"},
+    {"start": 7.2, "end": 8.6, "text": "まだです。"},
+    {"start": 8.7, "end": 10.5, "text": "これから作るつもりです。"},
+    {"start": 11.4, "end": 13.0, "text": "じゃあ、一緒にコーヒーを飲みませんか。"}
+  ],
+  "translation_cues": [
+    {"start": 1.2, "end": 4.2, "text": "早上好，今天天气真好呢。"},
+    {"start": 5.0, "end": 6.4, "text": "早饭吃过了吗？"},
+    {"start": 7.2, "end": 8.6, "text": "还没。"},
+    {"start": 8.7, "end": 10.5, "text": "我正打算去做。"},
+    {"start": 11.4, "end": 13.0, "text": "那要不要一起喝杯咖啡？"}
+  ]
+}

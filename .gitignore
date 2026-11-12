@@ -1,0 +1,22 @@
+# Generated cards & media (large, and may contain copyrighted audio/video)
+out/
+*.apkg
+*.mp3
+*.wav
+*.tsv
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Local machine state / secrets (never commit)
+runtime-python.txt
+cookies.txt
+.env
+*.log
+_private/
+.DS_Store
+Thumbs.db
